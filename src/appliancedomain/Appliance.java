@@ -1,14 +1,14 @@
 package appliancedomain;
 
 public abstract class Appliance {
-	private Integer applianceNumber;
+	private int applianceNumber;
 	private String brand;
-	private Integer quantity;
-	private Integer wattage;
+	private int quantity;
+	private int wattage;
 	private String colour;
-	private Double price;
+	private double price;
 	
-	public Appliance(Integer applianceNumber, String brand, Integer quantity, Integer wattage, String colour, Double price) {
+	public Appliance(int applianceNumber, String brand, int quantity, int wattage, String colour, double price) {
 		super();
 		this.applianceNumber = applianceNumber;
 		this.brand = brand;

@@ -17,7 +17,7 @@ public class MenuManager {
 	}
 	
 	Scanner keyboardInput = new Scanner( System.in );
-	String menuInput = null;
+	String menuInput;
 	public void MenuPrint() {
 		System.out.println("Welcome to Modern Appliances!");
 		System.out.println("How may we assist you?");
@@ -31,18 +31,29 @@ public class MenuManager {
 		switch(menuInput) {
 			case "1":
 				System.out.println("Enter the item number of an appliance: ");
-				Integer checkOut = keyboardInput.nextInt();				
+				Integer checkOut = keyboardInput.nextInt();
 				am.ApplianceCheckOut(checkOut);
+				MenuPrint();
+				break;
 			case "2":
-				am.FindAppliances();
+				System.out.println("Enter brand to search for:");
+				String brandSearch = keyboardInput.nextLine();
+				am.FindAppliances(brandSearch);
+				MenuPrint();
+				break;
 			case "3":
 				am.FindAppliancesType();
+				break;
 			case "4":
 				am.RandomList();
+				break;
 			case "5":
 				am.SaveNQuit();
+				break;
 			case "6":
 				am.printList();
+				MenuPrint();
+				break;
 		}
 		
 	}

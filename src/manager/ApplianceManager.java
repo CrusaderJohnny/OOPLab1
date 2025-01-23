@@ -38,14 +38,6 @@ public class ApplianceManager {
 			String[] fields = line.split(";");
 			String id = fields[0];
 			char firstDigit = id.charAt(0);
-			int secondDigit = 0;
-			int temp = Integer.parseInt(fields[0]);
-			while(temp >= 10) {
-				temp/=10;
-			}
-			secondDigit = temp;
-			System.out.println(firstDigit);
-			System.out.println(line);
 			Appliance s = null;
 			switch(firstDigit) {
 				case '1':
@@ -53,25 +45,29 @@ public class ApplianceManager {
 							Integer.parseInt(fields[2]), Integer.parseInt(fields[3]),
 							fields[4], Double.parseDouble(fields[5]), Integer.parseInt(fields[6]), Integer.parseInt(fields[7]),
 							Integer.parseInt(fields[8]));
+					break;
 				case '2':
 					s = new Vacuum(Integer.parseInt(fields[0]), fields[1], 
 							Integer.parseInt(fields[2]), Integer.parseInt(fields[3]),
 							fields[4], Double.parseDouble(fields[5]), fields[6], Integer.parseInt(fields[7]));
+					break;
 				case '3':
 					s = new Microwave(Integer.parseInt(fields[0]), fields[1], 
 							Integer.parseInt(fields[2]), Integer.parseInt(fields[3]),
 							fields[4], Double.parseDouble(fields[5]), Double.parseDouble(fields[6]), fields[7]);	
+					break;
 				case '4':
 					s = new Dishwasher(Integer.parseInt(fields[0]), fields[1], 
 							Integer.parseInt(fields[2]), Integer.parseInt(fields[3]),
 							fields[4], Double.parseDouble(fields[5]), fields[6], fields[7]);
+					break;
 				case '5':
 					s = new Dishwasher(Integer.parseInt(fields[0]), fields[1], 
 							Integer.parseInt(fields[2]), Integer.parseInt(fields[3]),
 							fields[4], Double.parseDouble(fields[5]), fields[6], fields[7]);
+					break;
 			}
 			list.add(s);
-			System.out.println(s.toString());
 		}
 	}
 	public void printList() {
@@ -95,14 +91,24 @@ public class ApplianceManager {
 		// TODO Auto-generated method stub
 		
 	}
-	public void FindAppliances() {
-		// TODO Auto-generated method stub
+	public void FindAppliances(String brandSearch) {
+		boolean checkComplete = false;
+		ArrayList<Appliance> foundBrands = null;
+		for(Appliance a : list) {
+			if(a.getBrand() == brandSearch) {
+				System.out.println("found");
+				foundBrands.add(a);
+			}
+		}
+		if(foundBrands == null) {
+			System.out.println("No matching brands");
+		}
 		
 	}
-	public void ApplianceCheckOut(Integer checkApp) {
+	public void ApplianceCheckOut(int checkApp) {
 		boolean checkComplete = false;
 		for(Appliance a : list) {
-			if(checkApp == a.getApplianceNumber()) {
+			if(a.getApplianceNumber() == checkApp) {
 				if(a.getQuantity() == 0) {
 					System.out.println("The appliance is not available to be checked out.");
 					checkComplete = true;
@@ -114,12 +120,10 @@ public class ApplianceManager {
 					checkComplete = true;
 					break;
 				}
-			}
-			if(checkComplete == false) {
-				System.out.println("No appliances found with that number.");
-				break;
-			}
-			
+			}			
+		}
+		if(checkComplete == false) {
+			System.out.println("No appliances found with that number.");
 		}
 	}
 }
