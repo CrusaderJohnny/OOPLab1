@@ -2,12 +2,12 @@ package appliancedomain;
 
 public class Refrigerator extends Appliance {
 	
-	private int doors;
-	private int height;
-	private int width;
+	private Integer doors;
+	private Integer height;
+	private Integer width;
 
-	public Refrigerator(int applianceNumber, String brand, int quantity, int wattage, String colour, double price
-			,int doors, int height, int width) {
+	public Refrigerator(Integer applianceNumber, String brand, Integer quantity, Integer wattage, String colour, Double price
+			,Integer doors, Integer height, Integer width) {
 		super(applianceNumber, brand, quantity, wattage, colour, price);
 		this.doors = doors;
 		this.height = height;
@@ -18,7 +18,7 @@ public class Refrigerator extends Appliance {
 		return doors;
 	}
 
-	public void setDoors(int doors) {
+	public void setDoors(Integer doors) {
 		this.doors = doors;
 	}
 
@@ -26,7 +26,7 @@ public class Refrigerator extends Appliance {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 
@@ -34,7 +34,7 @@ public class Refrigerator extends Appliance {
 		return width;
 	}
 
-	public void setWidth(int width) {
+	public void setWidth(Integer width) {
 		this.width = width;
 	}
 

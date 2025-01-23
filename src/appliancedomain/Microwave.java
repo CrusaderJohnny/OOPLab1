@@ -2,11 +2,11 @@ package appliancedomain;
 
 public class Microwave extends Appliance {
 	
-	private double capacity;
+	private Double capacity;
 	private String roomType;
 
-	public Microwave(int applianceNumber, String brand, int quantity, int wattage, String colour, 
-			double price, double capacity, String roomType) {
+	public Microwave(Integer applianceNumber, String brand, Integer quantity, Integer wattage, String colour, 
+			Double price, Double capacity, String roomType) {
 		super(applianceNumber, brand, quantity, wattage, colour, price);
 		this.capacity = capacity;
 		this.roomType = roomType;
@@ -16,7 +16,7 @@ public class Microwave extends Appliance {
 		return capacity;
 	}
 
-	public void setCapacity(double capacity) {
+	public void setCapacity(Double capacity) {
 		this.capacity = capacity;
 	}
 

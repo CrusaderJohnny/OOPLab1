@@ -5,8 +5,8 @@ public class Dishwasher extends Appliance {
 	private String feature;
 	private String soundRating;
 
-	public Dishwasher(int applianceNumber, String brand, int quantity, int wattage, String colour, 
-			double price, String feature, String soundRating) {
+	public Dishwasher(Integer applianceNumber, String brand, Integer quantity, Integer wattage, String colour, 
+			Double price, String feature, String soundRating) {
 		super(applianceNumber, brand, quantity, wattage, colour, price);
 		this.feature = feature;
 		this.soundRating = soundRating;
@@ -29,26 +29,17 @@ public class Dishwasher extends Appliance {
 	}
 	
 	private String convertSoundRating(String soundRating) {
-		String qt = "Quietest";
-		String qr = "Quieter";
-		String qu = "Quiet";
-		String m = "Moderate";
-		if(soundRating == qt) {
-			return qt;
+		switch(soundRating) {
+		case "Qt":
+			return "Quietest";
+		case "Qr":
+			return "Quieter";
+		case "Qu":
+			return "Quiet";
+		case "M":
+			return "Moderate";			
 		}
-		else if(soundRating == qr) {
-			return qr;
-		}
-		else if(soundRating == qu) {
-			return qu;
-		}
-		else if(soundRating == m) {
-			return m;
-		}
-		else {
-			return "Invalid Rating";
-		}
-		
+		return null;		
 	}
 	@Override
 	public String toString() {

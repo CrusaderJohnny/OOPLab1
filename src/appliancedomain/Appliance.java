@@ -1,14 +1,14 @@
 package appliancedomain;
 
 public abstract class Appliance {
-	private int applianceNumber;
+	private Integer applianceNumber;
 	private String brand;
-	private int quantity;
-	private int wattage;
+	private Integer quantity;
+	private Integer wattage;
 	private String colour;
-	private double price;
+	private Double price;
 	
-	public Appliance(int applianceNumber, String brand, int quantity, int wattage, String colour, double price) {
+	public Appliance(Integer applianceNumber, String brand, Integer quantity, Integer wattage, String colour, Double price) {
 		super();
 		this.applianceNumber = applianceNumber;
 		this.brand = brand;
@@ -22,7 +22,7 @@ public abstract class Appliance {
 		return applianceNumber;
 	}
 
-	public void setApplianceNumber(int applianceNumber) {
+	public void setApplianceNumber(Integer applianceNumber) {
 		this.applianceNumber = applianceNumber;
 	}
 
@@ -38,7 +38,7 @@ public abstract class Appliance {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
@@ -46,7 +46,7 @@ public abstract class Appliance {
 		return wattage;
 	}
 
-	public void setWattage(int wattage) {
+	public void setWattage(Integer wattage) {
 		this.wattage = wattage;
 	}
 
@@ -62,7 +62,7 @@ public abstract class Appliance {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

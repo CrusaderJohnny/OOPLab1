@@ -3,10 +3,10 @@ package appliancedomain;
 public class Vacuum extends Appliance {
 	
 	private String grade;
-	private int voltage;
+	private Integer voltage;
 
-	public Vacuum(int applianceNumber, String brand, int quantity, int wattage, String colour, 
-			double price, String grade, int voltage) {
+	public Vacuum(Integer applianceNumber, String brand, Integer quantity, Integer wattage, String colour, 
+			Double price, String grade, Integer voltage) {
 		super(applianceNumber, brand, quantity, wattage, colour, price);
 		this.grade = grade;
 		this.voltage = voltage;
@@ -24,7 +24,7 @@ public class Vacuum extends Appliance {
 		return voltage;
 	}
 
-	public void setVoltage(int voltage) {
+	public void setVoltage(Integer voltage) {
 		this.voltage = voltage;
 	}
 	
