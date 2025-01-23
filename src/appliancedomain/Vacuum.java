@@ -30,10 +30,13 @@ public class Vacuum extends Appliance {
 	
 	@Override
 	public String toString() {
-		return "Item #: " + getApplianceNumber() + ", Brand: " + getBrand()
-		+ ", Quantity: " + getQuantity() + ", Wattage: " + getWattage() + ", Colour: " + getColour()
-		+ ", Price: " + getPrice() + ", Vacuum Grade: " + getGrade() + ", Voltage: " +getVoltage();
+		return "Item #: " + getApplianceNumber() +  "\n Brand: " + getBrand()
+		+ "\n Quantity: " + getQuantity() + "\n Wattage: " + getWattage() + "\n Colour: " + getColour()
+		+ "\n Price: " + getPrice() + "\n Vacuum Grade: " + getGrade() + "\n Voltage: " +getVoltage()+ "\n";
 	}
-	
+	public String toSaveString() {
+		return +getApplianceNumber()+";"+getBrand()+";"+getQuantity()+";"+getWattage()+";"
+				+getColour()+";"+getPrice()+";"+getGrade()+";"+getVoltage();
+	}
 
 }

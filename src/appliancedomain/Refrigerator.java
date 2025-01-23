@@ -40,10 +40,14 @@ public class Refrigerator extends Appliance {
 
 	@Override
 	public String toString() {
-		return "Item #: " + getApplianceNumber() + ", Brand: " + getBrand()
-		+ ", Quantity: " + getQuantity() + ", Wattage: " + getWattage() + ", Colour: " + getColour()
-		+ ", Price: " + getPrice() + ", # of Doors: " + getDoors() + ", Height: " +getHeight() + 
-		", Width: " +getWidth();
+		return "Item #: " + getApplianceNumber() +  "\n Brand: " + getBrand()
+		+ "\n Quantity: " + getQuantity() + "\n Wattage: " + getWattage() + "\n Colour: " + getColour()
+		+ "\n Price: " + getPrice() + "\n # of Doors: " + getDoors() + "\n Height: " +getHeight() + 
+		"\n Width: " +getWidth()+ "\n";
+	}
+	public String toSaveString() {
+		return +getApplianceNumber()+";"+getBrand()+";"+getQuantity()+";"+getWattage()+";"
+				+getColour()+";"+getPrice()+";"+getDoors()+";"+getHeight();
 	}
 	
 	

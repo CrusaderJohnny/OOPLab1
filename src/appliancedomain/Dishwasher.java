@@ -43,10 +43,14 @@ public class Dishwasher extends Appliance {
 	}
 	@Override
 	public String toString() {
-		return "Item #: " + getApplianceNumber() + ", Brand: " + getBrand()
-		+ ", Quantity: " + getQuantity() + ", Wattage: " + getWattage() + ", Colour: " + getColour()
-		+ ", Price: " + getPrice() + ", Dishwasher feature: " + getFeature() +
-		", Sound Rating: " +convertSoundRating(this.soundRating);
+		return "Item #: " + getApplianceNumber() +  "\n Brand: " + getBrand()
+		+ "\n Quantity: " + getQuantity() + "\n Wattage: " + getWattage() + "\n Colour: " + getColour()
+		+ "\n Price: " + getPrice() + "\n Dishwasher feature: " + getFeature() +
+		"\n Sound Rating: " +convertSoundRating(this.soundRating)+ "\n";
+	}
+	public String toSaveString() {
+		return +getApplianceNumber()+";"+getBrand()+";"+getQuantity()+";"+getWattage()+";"+getColour()+
+				";"+getPrice()+";"+getFeature()+";"+getSoundRating();
 	}
 	
 

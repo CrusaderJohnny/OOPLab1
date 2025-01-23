@@ -4,6 +4,7 @@ import java.io.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Scanner;
 
 import appliancedomain.Appliance;
@@ -17,8 +18,9 @@ import appliancedomain.Vacuum;
 public class ApplianceManager {
 	
 	private ArrayList<Appliance> list;
-	Scanner input = null;
-	Scanner keyboard = null;
+	private Scanner input = null;
+	private Scanner keyboard = new Scanner (System.in);
+	private File file = new File("res/appliances.txt");
 	
 	public ApplianceManager() {
 		list = new ArrayList<>();
@@ -26,7 +28,6 @@ public class ApplianceManager {
 	}
 	
 	private void loadAppliancesFromFile() {
-		File file = new File("res/appliances.txt");
 		try {
 			Scanner newfile = new Scanner(file);
 			input = newfile;
@@ -70,40 +71,100 @@ public class ApplianceManager {
 			list.add(s);
 		}
 	}
-	public void printList() {
-		for(Appliance a : list) {
-			System.out.println(a.toString());
-		}
-	}
+
 	public ArrayList<Appliance> ReturnList() {
 		
 		return list;
 	}
 	public void SaveNQuit() {
-		// TODO Auto-generated method stub
-		
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (Appliance a : list) {
+                writer.write(a.toSaveString()); // Use the toString method for consistent formatting
+                writer.newLine(); // Add a new line after each object
+            }
+            System.out.println("File Saved");
+        } catch (IOException e) {
+            System.err.println("Error saving objects to file: " + e.getMessage());
+        }
 	}
-	public void RandomList() {
-		// TODO Auto-generated method stub
-		
+	public void RandomList(Integer ranNum) {
+		ArrayList<Appliance> randomList = new ArrayList<Appliance>();
+		Random random = new Random();
+		for(int i = 0; i < ranNum; i++) {
+			int randomIndex = random.nextInt(list.size());
+			randomList.add(list.get(randomIndex));
+		}
+		System.out.println(randomList.toString());
 	}
-	public void FindAppliancesType() {
-		// TODO Auto-generated method stub
+	public void FindAppliancesType(Integer appType) {
+		boolean checkComplete = false;
+		switch (appType) {
+		case 1:
+			System.out.println("Enter number of doors(2, 3, 4): ");
+			Integer doorNumbers = keyboard.nextInt();
+			for(Appliance a : list) {
+				if(a instanceof Refrigerator) {
+					if (((Refrigerator) a).getDoors() == doorNumbers) {
+						System.out.println(a.toString());
+						checkComplete = true;
+					}
+				}
+			}
+			break;
+		case 2:
+			System.out.println("Enter battery voltage value (18v, 24v:");
+			Integer battVolt = keyboard.nextInt();
+			for(Appliance a : list) {
+				if (a instanceof Vacuum) {
+					if (((Vacuum) a).getVoltage() == battVolt) {
+						System.out.println(a.toString());
+						checkComplete = true;
+					}
+				}
+			}
+			break;
+		case 3:
+			System.out.println("Microwave room location(K for kitchen or W for work):");
+			String roomLoc = keyboard.nextLine();
+			for(Appliance a : list) {
+				if(a instanceof Microwave) {
+					if(((Microwave) a).getRoomType().equalsIgnoreCase(roomLoc)) {
+						System.out.println(a.toString());
+						checkComplete = true;
+					}
+				}
+			}
+			break;
+		case 4:
+			System.out.println("Enter dishwasher sound rating(Qt(Quietest), Qr(Quieter), Qu(Quiet), or M(Moderate):");
+			String soundRat = keyboard.nextLine();
+			for(Appliance a : list) {
+				if (a instanceof Dishwasher) {
+					if(((Dishwasher) a).getSoundRating().equalsIgnoreCase(soundRat)) {
+						System.out.println(a.toString());
+						checkComplete = true;
+					}
+				}
+			}
+			break;
+		default:
+			System.out.println("No matching appliances");
+		}
+		
 		
 	}
 	public void FindAppliances(String brandSearch) {
 		boolean checkComplete = false;
-		ArrayList<Appliance> foundBrands = null;
 		for(Appliance a : list) {
-			if(a.getBrand() == brandSearch) {
-				System.out.println("found");
-				foundBrands.add(a);
+			if(a.getBrand().equalsIgnoreCase(brandSearch)) {
+				System.out.println("Matching Brands");
+				System.out.println(a.toString());
+				checkComplete = true;
 			}
 		}
-		if(foundBrands == null) {
+		if(!checkComplete) {
 			System.out.println("No matching brands");
 		}
-		
 	}
 	public void ApplianceCheckOut(int checkApp) {
 		boolean checkComplete = false;
@@ -115,8 +176,8 @@ public class ApplianceManager {
 					break;
 				}
 				else {
-					a.setQuantity(-1);
-					System.out.println("Appliance "+checkApp+ "has been checked out.");
+					a.setQuantity(a.getQuantity()-1);
+					System.out.println("Appliance " +checkApp+ " has been checked out.");
 					checkComplete = true;
 					break;
 				}

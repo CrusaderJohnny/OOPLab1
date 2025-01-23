@@ -29,9 +29,13 @@ public class Microwave extends Appliance {
 	}
 	@Override
 	public String toString() {
-		return "Item #: " + getApplianceNumber() + ", Brand: " + getBrand()
-		+ ", Quantity: " + getQuantity() + ", Wattage: " + getWattage() + ", Colour: " + getColour()
-		+ ", Price: " + getPrice() + ", Capacity: " + getCapacity() + ", Room Type: " +getRoomType();
+		return "Item #: " + getApplianceNumber() +  "\n Brand: " + getBrand()
+		+ "\n Quantity: " + getQuantity() + "\n Wattage: " + getWattage() + "\n Colour: " + getColour()
+		+ "\n Price: " + getPrice() + "\n Capacity: " + getCapacity() + "\n Room Type: " +getRoomType()+ "\n";
+	}
+	public String toSaveString() {
+		return +getApplianceNumber()+";"+getBrand()+";"+getQuantity()+";"+getWattage()+";"
+				+getColour()+";"+getPrice()+";"+getCapacity()+";"+getRoomType();
 	}
 	
 

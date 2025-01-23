@@ -22,7 +22,7 @@ public abstract class Appliance {
 		return applianceNumber;
 	}
 
-	public void setApplianceNumber(Integer applianceNumber) {
+	public void setApplianceNumber(int applianceNumber) {
 		this.applianceNumber = applianceNumber;
 	}
 
@@ -38,7 +38,7 @@ public abstract class Appliance {
 		return quantity;
 	}
 
-	public void setQuantity(Integer quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
@@ -46,7 +46,7 @@ public abstract class Appliance {
 		return wattage;
 	}
 
-	public void setWattage(Integer wattage) {
+	public void setWattage(int wattage) {
 		this.wattage = wattage;
 	}
 
@@ -62,15 +62,19 @@ public abstract class Appliance {
 		return price;
 	}
 
-	public void setPrice(Double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
 	@Override
 	public String toString() {
-		return "Item #: " + getApplianceNumber() + ", Brand: " + getBrand()
-				+ ", Quantity: " + getQuantity() + ", Wattage: " + getWattage() + ", Colour: " + getColour()
-				+ ", Price: " + getPrice();
+		return "Item #: " + getApplianceNumber() +  "\n Brand: " + getBrand()
+				+ "\n Quantity: " + getQuantity() + "\n Wattage: " + getWattage() + "\n Colour: " + getColour()
+				+ "\n Price: " + getPrice()+ "\n";
+	}
+	public String toSaveString() {
+		return +getApplianceNumber()+";"+getBrand()+";"+getQuantity()+";"+getWattage()+";"
+				+getColour()+";"+getPrice();
 	}
 	
 }
