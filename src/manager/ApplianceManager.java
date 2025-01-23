@@ -40,6 +40,10 @@ public class ApplianceManager {
 			char firstDigit = id.charAt(0);
 			int secondDigit = 0;
 			int temp = Integer.parseInt(fields[0]);
+			while(temp >= 10) {
+				temp/=10;
+			}
+			secondDigit = temp;
 			System.out.println(firstDigit);
 			System.out.println(line);
 			Appliance s = null;
